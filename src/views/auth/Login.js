@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
@@ -24,13 +24,34 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles(componentStyles);
 
 function Login() {
+
+  const data = [{ email: 'user@gmail.com', password: '123456', status: '1' }, { email: 'admin@gmail.com', password: '123456', status: '2' }]
+  const [account, setAccount] = useState({ email: '', password: '', status: '' });
+
+  const onInputChange = (e) => {
+    setAccount({ ...account, [e.target.name]: e.target.value })
+  }
+
   let history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
 
   const handleSignIn = () => {
-    history.push("/admin/index");
+    data.map(acc => {
+      if (account.email !== "" && account.email === acc.email && account.password === acc.password) {
+        if (acc.status === "2") {
+          history.push({ pathname: `/admin/index`, state: acc })
+        } else {
+          history.push({ pathname: `/user/home`, state: acc })
+        }
+      }
+    })
   }
+
+  useEffect(() => {
+
+  }, []);
+
   return (
     <>
       <Grid item xs={12} lg={5} md={7}>
@@ -118,6 +139,9 @@ function Login() {
               marginBottom="1rem!important"
             >
               <FilledInput
+                name="email"
+                value={account.email}
+                onChange={e => onInputChange(e)}
                 autoComplete="off"
                 type="email"
                 placeholder="Email"
@@ -135,6 +159,9 @@ function Login() {
               marginBottom="1rem!important"
             >
               <FilledInput
+                name="password"
+                value={account.password}
+                onChange={e => onInputChange(e)}
                 autoComplete="off"
                 type="password"
                 placeholder="Password"

@@ -9,7 +9,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
-
+import UserLayout from "layouts/User.js"
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
@@ -18,7 +18,8 @@ ReactDOM.render(
       <Switch>
         <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
         <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-        <Redirect from="/" to="/admin/index" />
+        <Route path="/user" render={(props) => <UserLayout {...props} />} />
+        <Redirect from="/" to="/auth/login" />
       </Switch>
     </BrowserRouter>
   </ThemeProvider>,

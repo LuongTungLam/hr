@@ -18,8 +18,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 // @material-ui/icons components
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import { MdEdit, MdDeleteForever, MdRemoveRedEye } from "react-icons/md";
+import { IconButton } from '@material-ui/core';
 
 // core components
 import Header from "components/Headers/Header.js";
@@ -118,7 +118,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Page name
+                        User name
                       </TableCell>
                       <TableCell
                         classes={{
@@ -128,7 +128,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Visitors
+                        Vacancy title
                       </TableCell>
                       <TableCell
                         classes={{
@@ -138,7 +138,7 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Unique users
+                        Vacancies title
                       </TableCell>
                       <TableCell
                         classes={{
@@ -148,7 +148,26 @@ function Dashboard() {
                             classes.tableCellRootHead,
                         }}
                       >
-                        Bounce rate
+                        Created By
+                      </TableCell>
+                      <TableCell
+                        classes={{
+                          root:
+                            classes.tableCellRoot +
+                            " " +
+                            classes.tableCellRootHead,
+                        }}
+                      >
+                        Status
+                      </TableCell>
+                      <TableCell
+                        classes={{
+                          root:
+                            classes.tableCellRoot +
+                            " " +
+                            classes.tableCellRootHead,
+                        }}
+                      >
                       </TableCell>
                     </TableRow>
                   </TableHead>
@@ -173,180 +192,26 @@ function Dashboard() {
                       <TableCell classes={{ root: classes.tableCellRoot }}>
                         340
                       </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={classes.tableCellRoot}
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          component={ArrowUpward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.success.main}
-                        />
-                        46,53%
-                      </Box>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        /argon/index.html
+                      <TableCell classes={{ root: classes.tableCellRoot }}>
+                        ltl@gmail.com
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        3,985
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                        319
-                      </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={classes.tableCellRoot}
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.warning.main}
-                        />
-                        46,53%
-                      </Box>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        /argon/charts.html
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                        3,513
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                        294
-                      </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={classes.tableCellRoot}
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.warning.main}
-                        />
-                        36,49%
-                      </Box>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        /argon/tables.html
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                        2,050
-                      </TableCell>
-                      <TableCell classes={{ root: classes.tableCellRoot }}>
-                        147
-                      </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={classes.tableCellRoot}
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          component={ArrowUpward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.success.main}
-                        />
-                        50,87%
-                      </Box>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.tableCellRootBodyHead +
-                            " " +
-                            classes.borderBottomUnset,
-                        }}
-                        component="th"
-                        variant="head"
-                        scope="row"
-                      >
-                        /argon/profile.html
+                        1
                       </TableCell>
                       <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.borderBottomUnset,
-                        }}
+                        classes={{ root: classes.tableCellRoot }}
+                        align="right"
                       >
-                        1,795
+                        <IconButton >
+                          <MdRemoveRedEye />
+                        </IconButton>
+                        <IconButton >
+                          <MdEdit />
+                        </IconButton>
+                        <IconButton >
+                          <MdDeleteForever />
+                        </IconButton>
                       </TableCell>
-                      <TableCell
-                        classes={{
-                          root:
-                            classes.tableCellRoot +
-                            " " +
-                            classes.borderBottomUnset,
-                        }}
-                      >
-                        190
-                      </TableCell>
-                      <Box
-                        component={TableCell}
-                        className={
-                          classes.tableCellRoot +
-                          " " +
-                          classes.borderBottomUnset
-                        }
-                        marginBottom="-2px"
-                      >
-                        <Box
-                          component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
-                          color={theme.palette.error.main}
-                        />
-                        46,53%
-                      </Box>
                     </TableRow>
                   </TableBody>
                 </Box>

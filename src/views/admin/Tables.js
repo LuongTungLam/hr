@@ -83,7 +83,7 @@ const Tables = () => {
       <Header />
       <ModalDepartment open={open} setOpen={setOpen} />
       {/* Page content */}
-      <Grid container spacing={1} >
+      <Grid container spacing={1}>
         <Grid item xs={5}>
           <Container
             maxWidth={false}
