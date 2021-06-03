@@ -126,6 +126,17 @@ const UserVacancy = () => {
                                 <MenuItem value={3}>Senior</MenuItem>
                             </Select>
                         </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                id="email"
+                                name="email"
+                                label="Email"
+                                fullWidth
+                                autoComplete="shipping address-line1"
+                            />
+                        </Grid>
                     </Grid>
                     <div className={classes.buttons}>
                         <Button onClick={() => history.goBack()} className={classes.button}>
