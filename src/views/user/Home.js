@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Header from "views/user/Header.js";
 import Footer from "views/user/Footer.js";
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -43,13 +43,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Home = () => {
-
+    let location = useLocation();
     let history = useHistory();
     const classes = useStyles();
     const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     const handleClickVacancy = () => {
-        history.push({ pathname: "/user/vacancy", state: null });
+        history.push({ pathname: "/user/vacancy", state: location.state });
     }
 
     return (

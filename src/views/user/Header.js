@@ -6,7 +6,9 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -35,17 +37,38 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const Header = () => {
-    let location = useLocation()
+    let location = useLocation();
+    let history = useHistory();
     const classes = useStyles();
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({ email: '', password: '', status: '' });
+    const empty = { email: '', password: '', status: '' };
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
 
     useEffect(() => {
         if (location.state !== null) {
             setUser(location.state)
         }
     }, [location]);
+
+
+    const handleDetail = (e) => {
+        setAnchorEl(e.currentTarget);
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleLogout = () => {
+        handleClose();
+        history.replace({ pathname: '', state: empty });
+    }
+
+    const handleLogin = () => {
+        history.push('/auth/login')
+    }
 
     return (
         <>
@@ -57,8 +80,17 @@ const Header = () => {
                         <Link variant="button" color="textPrimary" className={classes.link}> Enterprise</Link>
                         <Link variant="button" color="textPrimary" className={classes.link}>Support</Link>
                     </nav>
-                    {location.state == null && <Button color="primary" variant="outlined" className={classes.link}>Login</Button>}
-                    {location.state !== null && <Avatar className={classes.small}></Avatar>}
+                    {user.email == "" && <Button color="primary" variant="outlined" onClick={handleLogin} className={classes.link}>Login</Button>}
+                    {user.email != "" && <Avatar className={classes.emall} onClick={handleDetail}></Avatar>}
+                    <Menu
+                        id="fade-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={open}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </Menu>
                 </Toolbar>
             </AppBar>
             {/* Hero unit */}
